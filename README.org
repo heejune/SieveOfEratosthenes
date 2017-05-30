@@ -1,0 +1,16 @@
+* SieveOfEratosthenes
+
+** Dependency
+- google benchmark(https://github.com/google/benchmark)
+
+** Result
+
+Run on (8 X 2592 MHz CPU s)
+05/31/17 00:59:51
+-----------------------------------------------------------------------------------
+Benchmark                                            Time           CPU Iterations
+-----------------------------------------------------------------------------------
+BM_get_nth_prime_without_sieve/10001                 2 ns          2 ns  448000000
+BM_get_nth_prime_with_basic_sieve/10001        1835914 ns    1843164 ns        373
+BM_get_nth_prime_with_optimized_sieve/10001     658592 ns     651042 ns       1080
+Press any key to continue . . .
