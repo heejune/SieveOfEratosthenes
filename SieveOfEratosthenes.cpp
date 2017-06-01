@@ -101,18 +101,18 @@ unsigned long get_nth_prime_with_basic_sieve(unsigned long n) {
 		// get index nth true locates
 		unsigned long nth = 0;
 
-		// 2부터 시작해서(0과 1인 true이지만 prime number가 아니므로), 
-		// 더해진 prime number의 합이 n과 같다면, 현재 그 위치를 반환한다.
+		// from prime[2] - (prime[0] and prime[1] are true, but not prime numbers), 
+		// if n is equal to the summed up prime numbers, then return the location.
 		auto it = std::find_if(begin(prime) + 2, end(prime), [nth, n](bool e) mutable { 
-			if (e) {
-				nth++;
-				if (nth == n)
+			if (e) {	// find the true elements
+				nth++;	// and increment the count
+				if (nth == n)	// and we found Nth number,
 					return true;
 			} 
 			return false;
 		});
 
-		// 그 위치의 수를 구한다.
+		// get the value of found index points to.
 		auto d = std::distance(begin(prime), it);
 
 		return d;
@@ -202,19 +202,22 @@ TEST(PrimeCheck, basic_prime_check_tests)
 */
 
 static void BM_get_nth_prime_without_sieve(benchmark::State& state) {
-	while (state.KeepRunning())
-		get_nth_prime_without_sieve(state.range_x());
+	while (state.KeepRunning()) {
+		benchmark::DoNotOptimize(get_nth_prime_without_sieve(state.range(0)));
+	}
 }
 
 static void BM_get_nth_prime_with_basic_sieve(benchmark::State& state) {
-	while (state.KeepRunning())
-		get_nth_prime_with_basic_sieve(state.range_x());
+	while (state.KeepRunning()) {
+		benchmark::DoNotOptimize(get_nth_prime_with_basic_sieve(state.range(0)));
+	}
 }
 
 
 static void BM_get_nth_prime_with_optimized_sieve(benchmark::State& state) {
-	while (state.KeepRunning())
-		get_nth_prime_with_optimized_sieve(state.range_x());
+	while (state.KeepRunning()) {
+		benchmark::DoNotOptimize(get_nth_prime_with_optimized_sieve(state.range(0)));
+	}
 }
 
 

@@ -1,16 +1,40 @@
 * SieveOfEratosthenes
 
 ** Dependency
-- google benchmark(https://github.com/google/benchmark)
+ [[https://github.com/google/benchmark][google benchmark]]
 
 ** Result
 
-Run on (8 X 2592 MHz CPU s)
-05/31/17 00:59:51
------------------------------------------------------------------------------------
-Benchmark                                            Time           CPU Iterations
------------------------------------------------------------------------------------
-BM_get_nth_prime_without_sieve/10001                 2 ns          2 ns  448000000
-BM_get_nth_prime_with_basic_sieve/10001        1835914 ns    1843164 ns        373
-BM_get_nth_prime_with_optimized_sieve/10001     658592 ns     651042 ns       1080
-Press any key to continue . . .
+D:\workspace\playground\SieveOfEratosthenes\Release>SieveOfEratosthenes.exe --benchmark_format=json
+{
+  "context": {
+    "date": "06/02/17 00:42:44",
+    "num_cpus": 8,
+    "mhz_per_cpu": 2592,
+    "cpu_scaling_enabled": false,
+    "library_build_type": "release"
+  },
+  "benchmarks": [
+    {
+      "name": "BM_get_nth_prime_without_sieve/10001",
+      "iterations": 167,
+      "real_time": 4295557,
+      "cpu_time": 4303892,
+      "time_unit": "ns"
+    },
+    {
+      "name": "BM_get_nth_prime_with_basic_sieve/10001",
+      "iterations": 373,
+      "real_time": 1907070,
+      "cpu_time": 1885054,
+      "time_unit": "ns"
+    },
+    {
+      "name": "BM_get_nth_prime_with_optimized_sieve/10001",
+      "iterations": 1120,
+      "real_time": 634419,
+      "cpu_time": 641741,
+      "time_unit": "ns"
+    }
+  ]
+}
